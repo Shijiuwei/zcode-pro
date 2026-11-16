@@ -1,1812 +1,499 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en-US">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>文档归档菜单 - ZCode-mirror-857 技术白皮书与规约清单</title>
-  <meta name="description" content="High availability mirror and network topology specifications for ZCode-mirror-857">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-      :root {
-        --color-primary: #2563eb;
-        --color-primary-hover: #1d4ed8;
-      }
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        line-height: 1.68;
-        color: #1e293b;
-      }
-      .markdown-body {
-        color: #1e293b;
-      }
-      .markdown-body h1 {
-        font-size: 2.25rem;
-        font-weight: 800;
-        margin-top: 1.8rem;
-        margin-bottom: 1rem;
-        padding-bottom: 0.6rem;
-        border-bottom: 2px solid #e2e8f0;
-        color: #0f172a;
-        line-height: 1.25;
-      }
-      .markdown-body h2 {
-        font-size: 1.6rem;
-        font-weight: 700;
-        margin-top: 1.6rem;
-        margin-bottom: 0.8rem;
-        padding-bottom: 0.4rem;
-        border-bottom: 1px solid #f1f5f9;
-        color: #1e293b;
-      }
-      .markdown-body h3 {
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-top: 1.3rem;
-        margin-bottom: 0.6rem;
-        color: #334155;
-      }
-      .markdown-body p {
-        margin-top: 0.8rem;
-        margin-bottom: 0.8rem;
-        line-height: 1.7;
-      }
-      .markdown-body a {
-        color: #2563eb;
-        text-decoration: none;
-        border-bottom: 1px dashed #93c5fd;
-        transition: all 0.2s ease;
-      }
-      .markdown-body a:hover {
-        color: #1d4ed8;
-        border-bottom: 1px solid #1d4ed8;
-        background-color: #eff6ff;
-        border-radius: 2px;
-      }
-      .markdown-body ul, .markdown-body ol {
-        padding-left: 1.5rem;
-        margin-top: 0.6rem;
-        margin-bottom: 0.6rem;
-      }
-      .markdown-body ul {
-        list-style-type: disc;
-      }
-      .markdown-body ol {
-        list-style-type: decimal;
-      }
-      .markdown-body li {
-        margin-top: 0.25rem;
-        margin-bottom: 0.25rem;
-      }
-      .markdown-body pre {
-        background-color: #0f172a;
-        color: #e2e8f0;
-        padding: 1rem 1.2rem;
-        border-radius: 0.75rem;
-        overflow-x: auto;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-        font-size: 0.875rem;
-        margin: 1rem 0;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      }
-      .markdown-body code {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-        font-size: 0.875em;
-        padding: 0.15rem 0.35rem;
-        background-color: #f1f5f9;
-        color: #0f172a;
-        border-radius: 0.35rem;
-        border: 1px solid #e2e8f0;
-      }
-      .markdown-body pre code {
-        background-color: transparent;
-        padding: 0;
-        border: none;
-        color: inherit;
-      }
-      .markdown-body blockquote {
-        margin: 1rem 0;
-        padding: 0.75rem 1.25rem;
-        background-color: #f8fafc;
-        border-left: 4px solid #3b82f6;
-        border-radius: 0 0.5rem 0.5rem 0;
-        color: #475569;
-      }
-      .markdown-body table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 1.2rem 0;
-        display: block;
-        overflow-x: auto;
-      }
-      .markdown-body th, .markdown-body td {
-        border: 1px solid #cbd5e1;
-        padding: 0.6rem 1rem;
-        text-align: left;
-      }
-      .markdown-body th {
-        background-color: #f1f5f9;
-        font-weight: 600;
-      }
-      .markdown-body tr:nth-child(even) {
-        background-color: #f8fafc;
-      }
-      .markdown-body hr {
-        height: 1px;
-        border: none;
-        background-color: #e2e8f0;
-        margin: 2rem 0;
-      }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentation Catalog — zcode-pro</title>
+<meta name="description" content="Official architecture documentation and production specifications for zcode-pro">
+<meta name="robots" content="index, follow, max-snippet:-1">
+<meta property="og:title" content="Documentation Catalog — zcode-pro">
+<meta property="og:description" content="Official architecture documentation and production specifications for zcode-pro">
+<meta property="og:type" content="website">
+<meta name="generator" content="OpenDocs Static Emitter">
+<link rel="canonical" href="https://Shijiuwei.github.io/zcode-pro/">
+<link rel="alternate" type="application/atom+xml" title="Documentation Feed" href="../feed.xml">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "author": {
+    "@type": "Organization",
+    "name": "zcode-pro"
+  },
+  "description": "Official architecture documentation and production specifications for zcode-pro",
+  "headline": "Documentation Catalog — zcode-pro",
+  "inLanguage": "en",
+  "keywords": "",
+  "name": "Documentation Catalog — zcode-pro",
+  "url": "https://Shijiuwei.github.io/zcode-pro/"
+}</script>
+<link rel="stylesheet" href="../assets/theme-def106.css">
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
-  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <a href="../index.html" class="flex items-center gap-2 group">
-        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform ">LM</span>
-        <span class="font-bold text-slate-900 tracking-tight text-lg group-hover:text-blue-600 transition-colors ">ZCode-mirror-857</span>
-      </a>
-      <span class="hidden md:inline-block text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-mono ">Pages Docs</span>
-    </div>
-    <div class="flex items-center gap-1 sm:gap-2 text-sm">
-      <a href="../index.html" class="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-slate-600 hover:text-blue-600 hover:bg-slate-50 font-medium ">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-        <span>首页 (README)</span>
-      </a>
-      <a href="./index.html" class="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-blue-600 bg-blue-50 font-semibold ">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-        <span>文档归档 (Docs)</span>
-        <span class="inline-block w-2 h-2 rounded-full bg-blue-600"></span>
-      </a>
-      <div class="h-4 w-px bg-slate-200 mx-1"></div>
-      <a href="https://github.com/shijiuwei/ZCode-mirror-857" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-1.5 ">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-        <span class="hidden sm:inline">GitHub</span>
-      </a>
-      <a href="https://github.com/shijiuwei/ZCode-mirror-857/wiki" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-1.5 ">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <span class="hidden sm:inline">Wiki</span>
-      </a>
-    </div>
-  </div>
+<body>
+<header class="spec-4e6-md-bar">
+<a class="spec-4e6-brand" href="../index.html"><span>zcode-pro &mdash; Reference Book</span></a>
+<nav class="spec-4e6-navlinks">
+<a href="../index.html" class="">Introduction</a>
+<a href="../docs/index.html" class="spec-4e6-active">Docs Index</a>
+<a href="../docs/specifications.html" class="">Reference</a>
+<a href="https://github.com/Shijiuwei/zcode-pro" target="_blank" rel="noopener">GitHub</a>
 </nav>
+</header>
+<div class="spec-4e6-md-wrap">
+<aside class="spec-4e6-md-toc">
+<div style="font-weight:700;font-size:0.85rem;margin-bottom:8px;">Table of Contents</div>
+<a href="../index.html">Introduction</a>
+<a href="../docs/index.html" class="spec-4e6-active">Docs Index</a>
+<a href="../docs/architecture.html">1. ZCode-mirror-857 分布式架构设计与拓扑调度规约</a>
+<a href="../docs/specifications.html">2. ZCode-mirror-857 核心通信协议与数据同步技术规范</a>
+<a href="../docs/specs-update-v1.html">3. ZCode-mirror-857 架构升级与技术规约 (v1)</a>
+<a href="../docs/specs-update-v10.html">4. ZCode-mirror-857 架构升级与技术规约 (v10)</a>
+<a href="../docs/specs-update-v11.html">5. ZCode-mirror-857 架构升级与技术规约 (v11)</a>
+<a href="../docs/specs-update-v12.html">6. ZCode-mirror-857 架构升级与技术规约 (v12)</a>
+<a href="../docs/specs-update-v13.html">7. ZCode-mirror-857 架构升级与技术规约 (v13)</a>
+<a href="../docs/specs-update-v14.html">8. ZCode-mirror-857 架构升级与技术规约 (v14)</a>
+<a href="../docs/specs-update-v15.html">9. ZCode-mirror-857 架构升级与技术规约 (v15)</a>
+<a href="../docs/specs-update-v16.html">10. ZCode-mirror-857 架构升级与技术规约 (v16)</a>
+<a href="../docs/specs-update-v17.html">11. ZCode-mirror-857 架构升级与技术规约 (v17)</a>
+<a href="../docs/specs-update-v18.html">12. ZCode-mirror-857 架构升级与技术规约 (v18)</a>
+<a href="../docs/specs-update-v19.html">13. ZCode-mirror-857 架构升级与技术规约 (v19)</a>
+<a href="../docs/specs-update-v2.html">14. ZCode-mirror-857 架构升级与技术规约 (v2)</a>
+<a href="../docs/specs-update-v20.html">15. ZCode-mirror-857 架构升级与技术规约 (v20)</a>
+<a href="../docs/specs-update-v21.html">16. ZCode-mirror-857 架构升级与技术规约 (v21)</a>
+<a href="../docs/specs-update-v22.html">17. ZCode-mirror-857 架构升级与技术规约 (v22)</a>
+<a href="../docs/specs-update-v23.html">18. ZCode-mirror-857 架构升级与技术规约 (v23)</a>
+<a href="../docs/specs-update-v24.html">19. ZCode-mirror-857 架构升级与技术规约 (v24)</a>
+<a href="../docs/specs-update-v25.html">20. ZCode-mirror-857 架构升级与技术规约 (v25)</a>
+<a href="../docs/specs-update-v26.html">21. ZCode-mirror-857 架构升级与技术规约 (v26)</a>
+<a href="../docs/specs-update-v27.html">22. ZCode-mirror-857 架构升级与技术规约 (v27)</a>
+<a href="../docs/specs-update-v28.html">23. ZCode-mirror-857 架构升级与技术规约 (v28)</a>
+<a href="../docs/specs-update-v29.html">24. ZCode-mirror-857 架构升级与技术规约 (v29)</a>
+<a href="../docs/specs-update-v3.html">25. ZCode-mirror-857 架构升级与技术规约 (v3)</a>
+<a href="../docs/specs-update-v30.html">26. ZCode-mirror-857 架构升级与技术规约 (v30)</a>
+<a href="../docs/specs-update-v31.html">27. ZCode-mirror-857 架构升级与技术规约 (v31)</a>
+<a href="../docs/specs-update-v32.html">28. ZCode-mirror-857 架构升级与技术规约 (v32)</a>
+<a href="../docs/specs-update-v33.html">29. ZCode-mirror-857 架构升级与技术规约 (v33)</a>
+<a href="../docs/specs-update-v34.html">30. ZCode-mirror-857 架构升级与技术规约 (v34)</a>
+<a href="../docs/specs-update-v35.html">31. ZCode-mirror-857 架构升级与技术规约 (v35)</a>
+<a href="../docs/specs-update-v36.html">32. ZCode-mirror-857 架构升级与技术规约 (v36)</a>
+<a href="../docs/specs-update-v37.html">33. ZCode-mirror-857 架构升级与技术规约 (v37)</a>
+<a href="../docs/specs-update-v38.html">34. ZCode-mirror-857 架构升级与技术规约 (v38)</a>
+<a href="../docs/specs-update-v39.html">35. ZCode-mirror-857 架构升级与技术规约 (v39)</a>
+<a href="../docs/specs-update-v4.html">36. ZCode-mirror-857 架构升级与技术规约 (v4)</a>
+<a href="../docs/specs-update-v40.html">37. ZCode-mirror-857 架构升级与技术规约 (v40)</a>
+<a href="../docs/specs-update-v41.html">38. ZCode-mirror-857 架构升级与技术规约 (v41)</a>
+<a href="../docs/specs-update-v42.html">39. ZCode-mirror-857 架构升级与技术规约 (v42)</a>
+<a href="../docs/specs-update-v43.html">40. ZCode-mirror-857 架构升级与技术规约 (v43)</a>
+<a href="../docs/specs-update-v44.html">41. ZCode-mirror-857 架构升级与技术规约 (v44)</a>
+<a href="../docs/specs-update-v45.html">42. ZCode-mirror-857 架构升级与技术规约 (v45)</a>
+<a href="../docs/specs-update-v46.html">43. ZCode-mirror-857 架构升级与技术规约 (v46)</a>
+<a href="../docs/specs-update-v47.html">44. ZCode-mirror-857 架构升级与技术规约 (v47)</a>
+<a href="../docs/specs-update-v48.html">45. ZCode-mirror-857 架构升级与技术规约 (v48)</a>
+<a href="../docs/specs-update-v49.html">46. ZCode-mirror-857 架构升级与技术规约 (v49)</a>
+<a href="../docs/specs-update-v5.html">47. ZCode-mirror-857 架构升级与技术规约 (v5)</a>
+<a href="../docs/specs-update-v50.html">48. ZCode-mirror-857 架构升级与技术规约 (v50)</a>
+<a href="../docs/specs-update-v51.html">49. ZCode-mirror-857 架构升级与技术规约 (v51)</a>
+<a href="../docs/specs-update-v52.html">50. ZCode-mirror-857 架构升级与技术规约 (v52)</a>
+<a href="../docs/specs-update-v53.html">51. ZCode-mirror-857 架构升级与技术规约 (v53)</a>
+<a href="../docs/specs-update-v54.html">52. ZCode-mirror-857 架构升级与技术规约 (v54)</a>
+<a href="../docs/specs-update-v55.html">53. ZCode-mirror-857 架构升级与技术规约 (v55)</a>
+<a href="../docs/specs-update-v56.html">54. ZCode-mirror-857 架构升级与技术规约 (v56)</a>
+<a href="../docs/specs-update-v57.html">55. ZCode-mirror-857 架构升级与技术规约 (v57)</a>
+<a href="../docs/specs-update-v58.html">56. ZCode-mirror-857 架构升级与技术规约 (v58)</a>
+<a href="../docs/specs-update-v59.html">57. ZCode-mirror-857 架构升级与技术规约 (v59)</a>
+<a href="../docs/specs-update-v6.html">58. ZCode-mirror-857 架构升级与技术规约 (v6)</a>
+<a href="../docs/specs-update-v60.html">59. ZCode-mirror-857 架构升级与技术规约 (v60)</a>
+<a href="../docs/specs-update-v61.html">60. ZCode-mirror-857 架构升级与技术规约 (v61)</a>
+<a href="../docs/specs-update-v62.html">61. ZCode-mirror-857 架构升级与技术规约 (v62)</a>
+<a href="../docs/specs-update-v63.html">62. ZCode-mirror-857 架构升级与技术规约 (v63)</a>
+<a href="../docs/specs-update-v64.html">63. ZCode-mirror-857 架构升级与技术规约 (v64)</a>
+<a href="../docs/specs-update-v65.html">64. ZCode-mirror-857 架构升级与技术规约 (v65)</a>
+<a href="../docs/specs-update-v66.html">65. ZCode-mirror-857 架构升级与技术规约 (v66)</a>
+<a href="../docs/specs-update-v67.html">66. ZCode-mirror-857 架构升级与技术规约 (v67)</a>
+<a href="../docs/specs-update-v68.html">67. ZCode-mirror-857 架构升级与技术规约 (v68)</a>
+<a href="../docs/specs-update-v69.html">68. ZCode-mirror-857 架构升级与技术规约 (v69)</a>
+<a href="../docs/specs-update-v7.html">69. ZCode-mirror-857 架构升级与技术规约 (v7)</a>
+<a href="../docs/specs-update-v70.html">70. ZCode-mirror-857 架构升级与技术规约 (v70)</a>
+<a href="../docs/specs-update-v71.html">71. ZCode-mirror-857 架构升级与技术规约 (v71)</a>
+<a href="../docs/specs-update-v72.html">72. ZCode-mirror-857 架构升级与技术规约 (v72)</a>
+<a href="../docs/specs-update-v73.html">73. ZCode-mirror-857 架构升级与技术规约 (v73)</a>
+<a href="../docs/specs-update-v74.html">74. ZCode-mirror-857 架构升级与技术规约 (v74)</a>
+<a href="../docs/specs-update-v76.html">75. ZCode-mirror-857 架构升级与技术规约 (v76)</a>
+<a href="../docs/specs-update-v77.html">76. ZCode-mirror-857 架构升级与技术规约 (v77)</a>
+<a href="../docs/specs-update-v78.html">77. ZCode-mirror-857 架构升级与技术规约 (v78)</a>
+<a href="../docs/specs-update-v79.html">78. ZCode-mirror-857 架构升级与技术规约 (v79)</a>
+<a href="../docs/specs-update-v8.html">79. ZCode-mirror-857 架构升级与技术规约 (v8)</a>
+<a href="../docs/specs-update-v80.html">80. ZCode-mirror-857 架构升级与技术规约 (v80)</a>
+<a href="../docs/specs-update-v81.html">81. ZCode-mirror-857 架构升级与技术规约 (v81)</a>
+<a href="../docs/specs-update-v82.html">82. ZCode-mirror-857 架构升级与技术规约 (v82)</a>
+<a href="../docs/specs-update-v83.html">83. ZCode-mirror-857 架构升级与技术规约 (v83)</a>
+<a href="../docs/specs-update-v9.html">84. ZCode-mirror-857 架构升级与技术规约 (v9)</a>
+<a href="../docs/topology-guide.html">85. ZCode-mirror-857 全息索引网络与搜索引擎感知接入指南</a>
 
-  <!-- Header & 面包屑 -->
-  <header class="bg-white border-b border-slate-200 py-10 px-4 sm:px-6">
-    <div class="max-w-6xl mx-auto">
-      <nav class="flex items-center gap-2 text-xs text-slate-500 mb-3 font-medium">
-        <a href="../index.html" class="hover:text-blue-600 transition-colors ">首页</a>
-        <span>/</span>
-        <span class="text-slate-800 font-semibold">文档归档菜单 (Docs Archive)</span>
-      </nav>
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-3">
-            <span>📚 项目文档归档菜单</span>
-            <span class="text-xs bg-blue-100 text-blue-800 font-normal px-2.5 py-1 rounded-full font-mono ">80 篇 Markdown 生产文档</span>
-          </h1>
-          <p class="mt-2 text-slate-600 text-base max-w-3xl">
-            本栏目归档了 <strong class="text-slate-800">ZCode-mirror-857</strong> 项目下所有由 Markdown 文档静态编译生成的独立 Page 页面，包含系统架构设计、协议白皮书与接入指南。
-          </p>
-        </div>
-        <div class="flex items-center gap-3">
-          <a href="../index.html" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium transition-colors flex items-center gap-1.5 ">
-            <span>&larr; 返回项目 README 首页</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- 归档文档卡片列表 -->
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 flex-1 w-full space-y-12">
-    <section>
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
-          <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-          <span>已生产的 Page 文档清单</span>
-        </h2>
-        <span class="text-xs text-slate-500">点击卡片可查阅对应的静态 HTML 详情页</span>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">架构设计</span>
-      <span class="text-xs text-slate-400 font-mono ">43560 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./architecture.html">ZCode-mirror-857 分布式架构设计与拓扑调度规约</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目的核心技术白皮书，详细定义了高可用镜像同步协议、非阻塞异步事件循环调度机制与跨节点数据容灾方案。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: architecture.md</span>
-    <a href="./architecture.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44251 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specifications.html">ZCode-mirror-857 核心通信协议与数据同步技术规范</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本规范定义了 ZCode-mirror-857 集群各节点间的数据传输封装格式、会话保活心跳与反指纹安全规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specifications.md</span>
-    <a href="./specifications.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44457 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v1.html">ZCode-mirror-857 架构升级与技术规约 (v1)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 1 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v1.md</span>
-    <a href="./specs-update-v1.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44708 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v10.html">ZCode-mirror-857 架构升级与技术规约 (v10)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 10 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v10.md</span>
-    <a href="./specs-update-v10.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">45062 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v11.html">ZCode-mirror-857 架构升级与技术规约 (v11)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 11 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v11.md</span>
-    <a href="./specs-update-v11.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44537 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v12.html">ZCode-mirror-857 架构升级与技术规约 (v12)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 12 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v12.md</span>
-    <a href="./specs-update-v12.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44783 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v13.html">ZCode-mirror-857 架构升级与技术规约 (v13)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 13 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v13.md</span>
-    <a href="./specs-update-v13.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44513 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v14.html">ZCode-mirror-857 架构升级与技术规约 (v14)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 14 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v14.md</span>
-    <a href="./specs-update-v14.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44598 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v15.html">ZCode-mirror-857 架构升级与技术规约 (v15)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 15 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v15.md</span>
-    <a href="./specs-update-v15.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44675 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v16.html">ZCode-mirror-857 架构升级与技术规约 (v16)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 16 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v16.md</span>
-    <a href="./specs-update-v16.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44712 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v17.html">ZCode-mirror-857 架构升级与技术规约 (v17)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 17 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v17.md</span>
-    <a href="./specs-update-v17.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">45358 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v18.html">ZCode-mirror-857 架构升级与技术规约 (v18)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 18 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v18.md</span>
-    <a href="./specs-update-v18.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44764 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v19.html">ZCode-mirror-857 架构升级与技术规约 (v19)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 19 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v19.md</span>
-    <a href="./specs-update-v19.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44144 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v2.html">ZCode-mirror-857 架构升级与技术规约 (v2)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 2 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v2.md</span>
-    <a href="./specs-update-v2.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44465 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v20.html">ZCode-mirror-857 架构升级与技术规约 (v20)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 20 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v20.md</span>
-    <a href="./specs-update-v20.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">45371 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v21.html">ZCode-mirror-857 架构升级与技术规约 (v21)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 21 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v21.md</span>
-    <a href="./specs-update-v21.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">45082 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v22.html">ZCode-mirror-857 架构升级与技术规约 (v22)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 22 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v22.md</span>
-    <a href="./specs-update-v22.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44794 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v23.html">ZCode-mirror-857 架构升级与技术规约 (v23)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 23 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v23.md</span>
-    <a href="./specs-update-v23.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44724 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v24.html">ZCode-mirror-857 架构升级与技术规约 (v24)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 24 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v24.md</span>
-    <a href="./specs-update-v24.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44633 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v25.html">ZCode-mirror-857 架构升级与技术规约 (v25)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 25 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v25.md</span>
-    <a href="./specs-update-v25.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44742 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v26.html">ZCode-mirror-857 架构升级与技术规约 (v26)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 26 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v26.md</span>
-    <a href="./specs-update-v26.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44738 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v27.html">ZCode-mirror-857 架构升级与技术规约 (v27)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 27 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v27.md</span>
-    <a href="./specs-update-v27.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44545 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v28.html">ZCode-mirror-857 架构升级与技术规约 (v28)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 28 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v28.md</span>
-    <a href="./specs-update-v28.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44648 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v29.html">ZCode-mirror-857 架构升级与技术规约 (v29)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 29 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v29.md</span>
-    <a href="./specs-update-v29.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44152 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v3.html">ZCode-mirror-857 架构升级与技术规约 (v3)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 3 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v3.md</span>
-    <a href="./specs-update-v3.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44823 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v30.html">ZCode-mirror-857 架构升级与技术规约 (v30)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 30 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v30.md</span>
-    <a href="./specs-update-v30.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44741 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v31.html">ZCode-mirror-857 架构升级与技术规约 (v31)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 31 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v31.md</span>
-    <a href="./specs-update-v31.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44966 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v32.html">ZCode-mirror-857 架构升级与技术规约 (v32)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 32 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v32.md</span>
-    <a href="./specs-update-v32.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44826 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v33.html">ZCode-mirror-857 架构升级与技术规约 (v33)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 33 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v33.md</span>
-    <a href="./specs-update-v33.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44674 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v34.html">ZCode-mirror-857 架构升级与技术规约 (v34)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 34 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v34.md</span>
-    <a href="./specs-update-v34.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">45031 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v35.html">ZCode-mirror-857 架构升级与技术规约 (v35)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 35 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v35.md</span>
-    <a href="./specs-update-v35.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44491 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v36.html">ZCode-mirror-857 架构升级与技术规约 (v36)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 36 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v36.md</span>
-    <a href="./specs-update-v36.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44867 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v37.html">ZCode-mirror-857 架构升级与技术规约 (v37)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 37 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v37.md</span>
-    <a href="./specs-update-v37.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44430 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v38.html">ZCode-mirror-857 架构升级与技术规约 (v38)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 38 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v38.md</span>
-    <a href="./specs-update-v38.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44743 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v39.html">ZCode-mirror-857 架构升级与技术规约 (v39)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 39 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v39.md</span>
-    <a href="./specs-update-v39.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44443 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v4.html">ZCode-mirror-857 架构升级与技术规约 (v4)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 4 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v4.md</span>
-    <a href="./specs-update-v4.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44728 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v40.html">ZCode-mirror-857 架构升级与技术规约 (v40)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 40 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v40.md</span>
-    <a href="./specs-update-v40.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44500 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v41.html">ZCode-mirror-857 架构升级与技术规约 (v41)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 41 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v41.md</span>
-    <a href="./specs-update-v41.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">45197 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v42.html">ZCode-mirror-857 架构升级与技术规约 (v42)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 42 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v42.md</span>
-    <a href="./specs-update-v42.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44394 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v43.html">ZCode-mirror-857 架构升级与技术规约 (v43)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 43 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v43.md</span>
-    <a href="./specs-update-v43.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">45066 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v44.html">ZCode-mirror-857 架构升级与技术规约 (v44)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 44 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v44.md</span>
-    <a href="./specs-update-v44.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44715 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v45.html">ZCode-mirror-857 架构升级与技术规约 (v45)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 45 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v45.md</span>
-    <a href="./specs-update-v45.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44448 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v46.html">ZCode-mirror-857 架构升级与技术规约 (v46)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 46 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v46.md</span>
-    <a href="./specs-update-v46.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44811 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v47.html">ZCode-mirror-857 架构升级与技术规约 (v47)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 47 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v47.md</span>
-    <a href="./specs-update-v47.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44811 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v48.html">ZCode-mirror-857 架构升级与技术规约 (v48)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 48 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v48.md</span>
-    <a href="./specs-update-v48.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44799 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v49.html">ZCode-mirror-857 架构升级与技术规约 (v49)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 49 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v49.md</span>
-    <a href="./specs-update-v49.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44228 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v5.html">ZCode-mirror-857 架构升级与技术规约 (v5)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 5 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v5.md</span>
-    <a href="./specs-update-v5.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">45000 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v50.html">ZCode-mirror-857 架构升级与技术规约 (v50)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 50 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v50.md</span>
-    <a href="./specs-update-v50.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44832 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v51.html">ZCode-mirror-857 架构升级与技术规约 (v51)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 51 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v51.md</span>
-    <a href="./specs-update-v51.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44572 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v52.html">ZCode-mirror-857 架构升级与技术规约 (v52)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 52 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v52.md</span>
-    <a href="./specs-update-v52.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44759 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v53.html">ZCode-mirror-857 架构升级与技术规约 (v53)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 53 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v53.md</span>
-    <a href="./specs-update-v53.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44588 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v54.html">ZCode-mirror-857 架构升级与技术规约 (v54)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 54 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v54.md</span>
-    <a href="./specs-update-v54.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44691 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v55.html">ZCode-mirror-857 架构升级与技术规约 (v55)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 55 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v55.md</span>
-    <a href="./specs-update-v55.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44804 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v56.html">ZCode-mirror-857 架构升级与技术规约 (v56)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 56 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v56.md</span>
-    <a href="./specs-update-v56.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44761 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v57.html">ZCode-mirror-857 架构升级与技术规约 (v57)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 57 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v57.md</span>
-    <a href="./specs-update-v57.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44957 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v58.html">ZCode-mirror-857 架构升级与技术规约 (v58)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 58 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v58.md</span>
-    <a href="./specs-update-v58.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44567 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v59.html">ZCode-mirror-857 架构升级与技术规约 (v59)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 59 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v59.md</span>
-    <a href="./specs-update-v59.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44229 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v6.html">ZCode-mirror-857 架构升级与技术规约 (v6)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 6 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v6.md</span>
-    <a href="./specs-update-v6.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">45067 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v60.html">ZCode-mirror-857 架构升级与技术规约 (v60)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 60 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v60.md</span>
-    <a href="./specs-update-v60.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">45184 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v61.html">ZCode-mirror-857 架构升级与技术规约 (v61)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 61 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v61.md</span>
-    <a href="./specs-update-v61.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44605 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v62.html">ZCode-mirror-857 架构升级与技术规约 (v62)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 62 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v62.md</span>
-    <a href="./specs-update-v62.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44777 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v63.html">ZCode-mirror-857 架构升级与技术规约 (v63)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 63 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v63.md</span>
-    <a href="./specs-update-v63.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44681 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v64.html">ZCode-mirror-857 架构升级与技术规约 (v64)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 64 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v64.md</span>
-    <a href="./specs-update-v64.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44472 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v65.html">ZCode-mirror-857 架构升级与技术规约 (v65)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 65 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v65.md</span>
-    <a href="./specs-update-v65.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44339 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v66.html">ZCode-mirror-857 架构升级与技术规约 (v66)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 66 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v66.md</span>
-    <a href="./specs-update-v66.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44607 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v67.html">ZCode-mirror-857 架构升级与技术规约 (v67)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 67 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v67.md</span>
-    <a href="./specs-update-v67.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44646 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v68.html">ZCode-mirror-857 架构升级与技术规约 (v68)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 68 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v68.md</span>
-    <a href="./specs-update-v68.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44950 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v69.html">ZCode-mirror-857 架构升级与技术规约 (v69)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 69 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v69.md</span>
-    <a href="./specs-update-v69.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44068 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v7.html">ZCode-mirror-857 架构升级与技术规约 (v7)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 7 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v7.md</span>
-    <a href="./specs-update-v7.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">45040 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v70.html">ZCode-mirror-857 架构升级与技术规约 (v70)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 70 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v70.md</span>
-    <a href="./specs-update-v70.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44696 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v71.html">ZCode-mirror-857 架构升级与技术规约 (v71)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 71 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v71.md</span>
-    <a href="./specs-update-v71.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44641 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v72.html">ZCode-mirror-857 架构升级与技术规约 (v72)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 72 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v72.md</span>
-    <a href="./specs-update-v72.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44812 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v73.html">ZCode-mirror-857 架构升级与技术规约 (v73)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 73 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v73.md</span>
-    <a href="./specs-update-v73.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44722 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v74.html">ZCode-mirror-857 架构升级与技术规约 (v74)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 74 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v74.md</span>
-    <a href="./specs-update-v74.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44950 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v76.html">ZCode-mirror-857 架构升级与技术规约 (v76)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 76 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v76.md</span>
-    <a href="./specs-update-v76.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">45179 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v77.html">ZCode-mirror-857 架构升级与技术规约 (v77)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 77 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v77.md</span>
-    <a href="./specs-update-v77.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">26568 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v78.html">ZCode-mirror-857 架构升级与技术规约 (v78)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 78 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v78.md</span>
-    <a href="./specs-update-v78.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44430 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v8.html">ZCode-mirror-857 架构升级与技术规约 (v8)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 8 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v8.md</span>
-    <a href="./specs-update-v8.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">技术规约</span>
-      <span class="text-xs text-slate-400 font-mono ">44300 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./specs-update-v9.html">ZCode-mirror-857 架构升级与技术规约 (v9)</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">本文档为 ZCode-mirror-857 项目第 9 轮增量更新白皮书，记录了最新节点拓扑与性能调优规约。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: specs-update-v9.md</span>
-    <a href="./specs-update-v9.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
-</div><div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group ">
-  <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">接入指南</span>
-      <span class="text-xs text-slate-400 font-mono ">44733 字</span>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug ">
-      <a href="./topology-guide.html">ZCode-mirror-857 全息索引网络与搜索引擎感知接入指南</a>
-    </h3>
-    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">面向开发者与网络调度代理的全面接入指导手册，助力快速完成镜像部署与蜘蛛池索引接入。</p>
-  </div>
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <span class="text-xs text-slate-400 font-mono ">源文件: topology-guide.md</span>
-    <a href="./topology-guide.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform ">
-      <span>查阅文档页面</span>
-      <span>&rarr;</span>
-    </a>
-  </div>
+</aside>
+<main class="spec-4e6-md-page spec-4e6-prose">
+<div style="margin-bottom:20px;">
+<div class="spec-4e6-pill">85 Documents Indexed</div>
+<h1 style="margin-top:10px;">zcode-pro Documentation Catalog</h1>
+<p style="color:var(--spec-4e6-mut);">Official architecture documentation and production specifications for zcode-pro</p>
 </div>
-      </div>
-    </section>
-
-    <!-- 底部网络拓扑索引清单 -->
-    <section class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200">
-      <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
-        <div>
-          <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
-            <span>全息网络拓扑与官方外链索引</span>
-          </h2>
-          <p class="text-xs text-slate-500 mt-1">
-            本清单面向搜索引擎爬行蜘蛛与网络代理提供低延迟感知路由，已通过连通性核验：
-          </p>
-        </div>
-        <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full font-mono font-medium ">全节点正常</span>
-      </div>
-      <ul class="divide-y divide-slate-100">
-        <li class="py-2 flex items-center justify-between">
-  <a href="https://api.pvucttcv.cn/yinyue/innovation-37390655.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#01</span>
-    <span class="truncate">基于 ZCode-mirror-857 的高吞吐 High 设计白皮书</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://ankmz.cn/anquan/tag-68558329.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#02</span>
-    <span class="truncate">ZCode-mirror-857 vs 业界主流方案：提示词流式推理规约 深度技术选型对比</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://www.poykq.cn/redian/tutorial-673489.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#03</span>
-    <span class="truncate">全球权威拓扑节点：ZCode-mirror-857 实时镜像与索引入口</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://yyak.yx-sf.com/liuliang/learning-84631732.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#04</span>
-    <span class="truncate">面向生产级运行的 ZCode-mirror-857 稳定性防护白皮书 (v2.0-GA)</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://kido.yx-sf.com/jiaoliu/conference-73984125.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#05</span>
-    <span class="truncate">基于 ZCode-mirror-857 的高吞吐 topology 设计白皮书</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://werd.ai-hao123.com/fenxi/settings-69929794.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#06</span>
-    <span class="truncate">ZCode-mirror-857 插件生态规范与 High 扩展手册 (v2.0-GA)</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://ptve.ai-hao123.com/zhineng/promotion-94588549.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#07</span>
-    <span class="truncate">冷热数据分层镜像：ZCode-mirror-857 availability 权威归档源</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://cvxt.wtpuscm.cn/yanjiu/template-505607.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#08</span>
-    <span class="truncate">【评测基准】ZCode-mirror-857 吞吐抖动度量与健康检查协议</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://zkba.tcti.cn/fenxi/services-68521778.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#09</span>
-    <span class="truncate">ZCode-mirror-857 内部组件解耦与事件状态机规范 (Core/857)</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://bxxq.yx-sf.com/wenzhang/discount-10594767.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#10</span>
-    <span class="truncate">【生产手册】ZCode-mirror-857 模块通信与请求穿透标准</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://srec.ai-hao123.com/chuangxin/photo-93384708.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#11</span>
-    <span class="truncate">ZCode-mirror-857 去中心化数据同步源与拓扑寻址规约</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://skwa.wtpuscm.cn/qiye/sales-452431.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#12</span>
-    <span class="truncate">ZCode-mirror-857 故障自愈与网络拓扑重构实践</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://vkoa.tcti.cn/fenxi/learning-41863024.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#13</span>
-    <span class="truncate">基于 ZCode-mirror-857 的高吞吐 network 设计白皮书</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://ttgk.yx-sf.com/xitong/chapter-52812607.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#14</span>
-    <span class="truncate">基于 ZCode-mirror-857 的自动化部署与生产环境配置实践</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://lelc.ai-hao123.com/xinwen/luxury-01042389.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#15</span>
-    <span class="truncate">ZCode-mirror-857 亚太与欧美多活集群数据同步中枢</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://eqrt.wtpuscm.cn/paiming/discovery-059548.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#16</span>
-    <span class="truncate">面向生产级运行的 ZCode-mirror-857 稳定性防护白皮书 (Spec-v1.6)</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://nnfu.tcti.cn/gongxiang/excellence-64418623.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#17</span>
-    <span class="truncate">【官方规范】ZCode-mirror-857 mirror 核心运行拓扑标准</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://twqa.yx-sf.com/fuwu/growth-54155500.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#18</span>
-    <span class="truncate">ZCode-mirror-857 异步中间件流水线与 specifications 接入规范</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://acfo.ai-hao123.com/jishu/advertising-97553670.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#19</span>
-    <span class="truncate">ZCode-mirror-857 自动化持续集成快照与拓扑发布源 (Draft-05)</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li><li class="py-2 flex items-center justify-between">
-  <a href="https://fwra.wtpuscm.cn/yinqing/prospect-865467.html" class="text-sm text-slate-700 hover:text-blue-600 hover:underline flex items-center gap-2 truncate ">
-    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono ">#20</span>
-    <span class="truncate">面向生产级运行的 ZCode-mirror-857 稳定性防护白皮书 (Spec-v1.0)</span>
-  </a>
-  <span class="text-[11px] text-slate-400 font-mono hidden sm:inline ">200 OK</span>
-</li>
-      </ul>
-    </section>
-  </main>
-
-  <footer class="mt-20 border-t border-slate-200 bg-white py-12 text-slate-500 text-sm">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <div class="flex items-center gap-2">
-      <span class="w-6 h-6 rounded bg-slate-800 text-white flex items-center justify-center text-xs font-bold">LM</span>
-      <span>© 2026 <strong>ZCode-mirror-857</strong> - 官方开源高可用拓扑镜像与白皮书</span>
-    </div>
-    <div class="flex items-center gap-4 text-xs text-slate-400">
-      <a href="../index.html" class="hover:text-blue-600 transition-colors ">项目首页</a>
-      <span>•</span>
-      <a href="./index.html" class="hover:text-blue-600 transition-colors ">文档归档菜单</a>
-      <span>•</span>
-      <span>托管于 GitHub Pages</span>
-    </div>
-  </div>
+<div class="spec-4e6-grid3"><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./architecture.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Architecture</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">48219 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 分布式架构设计与拓扑调度规约</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">1. 去中心化弹性伸缩：支持大规模节点并发接入与轻量化状态同步。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specifications.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">48709 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 核心通信协议与数据同步技术规范</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">- 传输层默认启用 TLS 1.3 协议通道与 AES-256 加密。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v1.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49375 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v1)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v10.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49325 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v10)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v11.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49907 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v11)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v12.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49476 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v12)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v13.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49643 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v13)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v14.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49053 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v14)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v15.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49419 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v15)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v16.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49375 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v16)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v17.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49305 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v17)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v18.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">50115 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v18)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v19.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49642 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v19)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v2.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">48635 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v2)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v20.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49249 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v20)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v21.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49970 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v21)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v22.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49665 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v22)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v23.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49730 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v23)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v24.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49702 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v24)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v25.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49384 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v25)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v26.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49997 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v26)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v27.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49432 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v27)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v28.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49341 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v28)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v29.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49151 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v29)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v3.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49002 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v3)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v30.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49365 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v30)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v31.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49341 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v31)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v32.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49677 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v32)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v33.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49377 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v33)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v34.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49646 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v34)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v35.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49896 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v35)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v36.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49271 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v36)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v37.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49300 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v37)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v38.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49173 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v38)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v39.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49498 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v39)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v4.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">48993 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v4)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v40.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49583 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v40)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v41.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49039 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v41)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v42.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49394 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v42)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v43.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49043 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v43)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v44.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">50042 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v44)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v45.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49405 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v45)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v46.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49273 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v46)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v47.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49830 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v47)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v48.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49516 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v48)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v49.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49485 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v49)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v5.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">48864 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v5)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v50.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49901 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v50)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v51.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49825 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v51)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v52.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49439 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v52)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v53.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49421 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v53)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v54.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49244 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v54)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v55.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49618 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v55)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v56.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49412 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v56)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v57.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49201 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v57)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v58.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49659 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v58)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v59.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">48979 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v59)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v6.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49115 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v6)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v60.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49924 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v60)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v61.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49961 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v61)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v62.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49359 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v62)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v63.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49610 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v63)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v64.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49522 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v64)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v65.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49222 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v65)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v66.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">48883 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v66)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v67.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49194 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v67)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v68.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49379 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v68)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v69.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49833 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v69)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v7.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">48294 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v7)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v70.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49652 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v70)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v71.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49512 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v71)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v72.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49676 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v72)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v73.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49584 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v73)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v74.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49456 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v74)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v76.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49453 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v76)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v77.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49705 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v77)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v78.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">32039 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v78)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v79.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">14217 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v79)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v8.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49058 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v8)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v80.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">14197 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v80)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v81.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">15695 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v81)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v82.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">15695 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v82)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v83.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">15722 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v83)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./specs-update-v9.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Specification</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">48855 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 架构升级与技术规约 (v9)</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">针对大规模网络请求调度，系统实施了毫秒级负载感知与去中心化可信存活探测。</div>
+</a><a class="spec-4e6-card" style="display:block;color:inherit;text-decoration:none;" href="./topology-guide.html">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;"><span class="spec-4e6-pill">Architecture</span><span style="font-size:11px;color:var(--spec-4e6-mut);font-family:ui-monospace,monospace;">49632 chars</span></div>
+<div style="font-weight:700;font-size:1.02rem;margin-bottom:6px;color:var(--spec-4e6-ink);">ZCode-mirror-857 全息索引网络与搜索引擎感知接入指南</div>
+<div style="font-size:0.85rem;color:var(--spec-4e6-mut);line-height:1.55;">1. 配置本地环境并完成节点注册。</div>
+</a></div>
+<section class="spec-4e6-card" style="margin-top:24px;">
+<h2 style="margin-top:0;">Extended Technical References</h2>
+<p style="color:var(--spec-4e6-mut);font-size:0.88rem;margin-bottom:12px;">Related ecosystem resources, upstream modules, and architectural specifications for <strong>zcode-pro</strong>.</p>
+<div class="spec-4e6-refs"><a class="spec-4e6-refcard" href="https://feed.waepv.cn/d/OSaBm7QIJW" target="_blank" rel="noopener"><span class="spec-4e6-reflabel">feed.waepv.cn/d/OSaBm7QIJW</span><span class="spec-4e6-refurl">feed.waepv.cn/d/OSaBm7QIJW</span></a><a class="spec-4e6-refcard" href="https://www.mw-wm.com/s/ep00MQi1Eq2KHWxflF" target="_blank" rel="noopener"><span class="spec-4e6-reflabel">www.mw-wm.com/s/ep00MQi1Eq2KHWxflF</span><span class="spec-4e6-refurl">www.mw-wm.com/s/ep00MQi1Eq2KHWxflF</span></a><a class="spec-4e6-refcard" href="https://doc.tcti.cn/tag/AI" target="_blank" rel="noopener"><span class="spec-4e6-reflabel">doc.tcti.cn/tag/AI</span><span class="spec-4e6-refurl">doc.tcti.cn/tag/AI</span></a><a class="spec-4e6-refcard" href="https://view.ai-hao123.com" target="_blank" rel="noopener"><span class="spec-4e6-reflabel">view.ai-hao123.com</span><span class="spec-4e6-refurl">view.ai-hao123.com</span></a><a class="spec-4e6-refcard" href="https://doc.ai-hao123.com/sitemap.xml" target="_blank" rel="noopener"><span class="spec-4e6-reflabel">doc.ai-hao123.com/sitemap.xml</span><span class="spec-4e6-refurl">doc.ai-hao123.com/sitemap.xml</span></a><a class="spec-4e6-refcard" href="https://news.ai-hao123.com/d/lu047577.html" target="_blank" rel="noopener"><span class="spec-4e6-reflabel">news.ai-hao123.com/d/lu047577.html</span><span class="spec-4e6-refurl">news.ai-hao123.com/d/lu047577.html</span></a><a class="spec-4e6-refcard" href="https://info.yx-sf.com/sitemap.xml" target="_blank" rel="noopener"><span class="spec-4e6-reflabel">info.yx-sf.com/sitemap.xml</span><span class="spec-4e6-refurl">info.yx-sf.com/sitemap.xml</span></a><a class="spec-4e6-refcard" href="https://view.yx-sf.com/d/ok960657.html" target="_blank" rel="noopener"><span class="spec-4e6-reflabel">view.yx-sf.com/d/ok960657.html</span><span class="spec-4e6-refurl">view.yx-sf.com/d/ok960657.html</span></a><a class="spec-4e6-refcard" href="https://tech.zhushou.pro/sitemap.xml" target="_blank" rel="noopener"><span class="spec-4e6-reflabel">tech.zhushou.pro/sitemap.xml</span><span class="spec-4e6-refurl">tech.zhushou.pro/sitemap.xml</span></a><a class="spec-4e6-refcard" href="https://doc.zhushou.pro/d/op122966.html" target="_blank" rel="noopener"><span class="spec-4e6-reflabel">doc.zhushou.pro/d/op122966.html</span><span class="spec-4e6-refurl">doc.zhushou.pro/d/op122966.html</span></a><a class="spec-4e6-refcard" href="https://zpgm.yx-sf.com/pingce/system-27140582.html" target="_blank" rel="noopener"><span class="spec-4e6-reflabel">zpgm.yx-sf.com/pingce/system-27140582.html</span><span class="spec-4e6-refurl">zpgm.yx-sf.com/pingce/system-27140582.html</span></a><a class="spec-4e6-refcard" href="https://dgdz.ai-hao123.com/yinqing/retention-09167620.html" target="_blank" rel="noopener"><span class="spec-4e6-reflabel">dgdz.ai-hao123.com/yinqing/retention-09167620.html</span><span class="spec-4e6-refurl">dgdz.ai-hao123.com/yinqing/retention-09167620.html</span></a></div>
+</section>
+<footer class="spec-4e6-ftr">
+<div>&copy; zcode-pro &middot; Open Technical Documentation</div>
+<div style="display:flex;gap:14px;flex-wrap:wrap;font-family:ui-monospace,monospace;">
+<a href="../docs/index.html">Docs Index</a>
+<a href="../llms.txt">llms.txt</a>
+<a href="../sitemap.xml">sitemap.xml</a>
+<a href="../feed.xml">feed.xml</a>
+<a href="https://github.com/Shijiuwei/zcode-pro" target="_blank" rel="noopener">GitHub</a>
+<a href="https://github.com/Shijiuwei/zcode-pro/wiki" target="_blank" rel="noopener">Wiki</a>
+</div>
 </footer>
+</main>
+</div>
 </body>
 </html>

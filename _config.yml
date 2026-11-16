@@ -1,5 +1,6 @@
-title: "ZCode-mirror-857"
-description: "High availability mirror and network topology specifications for ZCode-mirror-857"
-theme: jekyll-theme-cayman
-plugins:
-  - jekyll-relative-links
+title: "zcode-pro"
+description: "Official architecture documentation and production specifications for zcode-pro"
+lang: en-US
+exclude:
+  - node_modules
+  - .git
